@@ -143,7 +143,7 @@ class MainActivity : ComponentActivity() {
         var dialogInfoVisible by remember { mutableStateOf(false) }
 
         if (dialogSettingsVisible) DialogSettings { dialogSettingsVisible = false }
-        if (dialogInfoVisible) DialogInfo { dialogSettingsVisible = false }
+        if (dialogInfoVisible) DialogInfo { dialogInfoVisible = false }
         if (dialogThemesVisible) DialogThemes(onThemeSelected = onThemeChange) { dialogThemesVisible = false }
 
         Scaffold(modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection), topBar = {
