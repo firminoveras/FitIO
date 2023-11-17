@@ -1,4 +1,5 @@
-# FitIO
+![header](https://github.com/firminoveras/FitIO/assets/19206565/77206970-ef18-4155-bddf-b0f29dfbede8)
+
 O FitIO é um aplicativo mobile de arquitetura Android que conta com um acervo de exercícios físicos que podem ser filtrados, favoritados e organizados. Com ele, é possível organizar treinos nos diferentes dias da semana, bem como motitorar as execuções de cada exercício.
 Esse projeto foi feito com o objetivo de exercitar e aprofundar o meu conhecimento acerca das novas tecnologias de desenvolvimento mobile.
 
@@ -8,6 +9,7 @@ Esse projeto foi feito com o objetivo de exercitar e aprofundar o meu conhecimen
 - Diversas opções de fitros em pesquisas;
 - Inicialização rápida;
 - Monitoramento das atividades físicas no decorrer da semana;
+> ![catppuccin-theme](https://github.com/firminoveras/FitIO/assets/19206565/1996f9c4-188f-4774-876a-b5f6e2a1a540)
 
 ## Tecnologias, Frameworks e Técnicas utilizadas
 | Tecnologia Utilizada | Tipo | Descrição |
@@ -23,3 +25,28 @@ Esse projeto foi feito com o objetivo de exercitar e aprofundar o meu conhecimen
 |![Static Badge](https://img.shields.io/badge/⠀-⠀APINinjas-%23262261?logo=nintendo)| API | Provedor de informações sobre os exercícios de forma remota, través de requisições HTTP. |
 |![Static Badge](https://img.shields.io/badge/⠀-⠀SQLite-%23003B57?logo=sqlite)| SQL Database Engine | Banco de dados implementado pelo Room. |
 |![Static Badge](https://img.shields.io/badge/⠀-⠀Catppuccin-%23babbf1?logo=inkscape)| Esquema de Cor | Esquema de cores pastéis que visa tons suaves. |
+
+![dynamic-colors](https://github.com/firminoveras/FitIO/assets/19206565/68a91581-9789-4155-832c-ee0fac822a73)
+
+## Licença
+MIT License
+
+Copyright (c) 2023 Firmino Veras
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
