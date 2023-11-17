@@ -1,4 +1,4 @@
-![header](https://github.com/firminoveras/FitIO/assets/19206565/77206970-ef18-4155-bddf-b0f29dfbede8)
+![header](https://github.com/firminoveras/FitIO/assets/19206565/64921c75-0740-48d1-9ce4-81967ba2c742)
 
 O FitIO é um aplicativo mobile de arquitetura Android que conta com um acervo de exercícios físicos que podem ser filtrados, favoritados e organizados. Com ele, é possível organizar treinos nos diferentes dias da semana, bem como motitorar as execuções de cada exercício.
 Esse projeto foi feito com o objetivo de exercitar e aprofundar o meu conhecimento acerca das novas tecnologias de desenvolvimento mobile.
@@ -9,7 +9,7 @@ Esse projeto foi feito com o objetivo de exercitar e aprofundar o meu conhecimen
 - Diversas opções de fitros em pesquisas;
 - Inicialização rápida;
 - Monitoramento das atividades físicas no decorrer da semana;
-> ![catppuccin-theme](https://github.com/firminoveras/FitIO/assets/19206565/1996f9c4-188f-4774-876a-b5f6e2a1a540)
+> ![catppuccin-theme](https://github.com/firminoveras/FitIO/assets/19206565/dbc5cfee-e5a6-4c38-a915-bf9435ea4de4)
 
 ## Tecnologias, Frameworks e Técnicas utilizadas
 | Tecnologia Utilizada | Tipo | Descrição |
@@ -26,7 +26,7 @@ Esse projeto foi feito com o objetivo de exercitar e aprofundar o meu conhecimen
 |![Static Badge](https://img.shields.io/badge/⠀-⠀SQLite-%23003B57?logo=sqlite)| SQL Database Engine | Banco de dados implementado pelo Room. |
 |![Static Badge](https://img.shields.io/badge/⠀-⠀Catppuccin-%23babbf1?logo=inkscape)| Esquema de Cor | Esquema de cores pastéis que visa tons suaves. |
 
-![dynamic-colors](https://github.com/firminoveras/FitIO/assets/19206565/68a91581-9789-4155-832c-ee0fac822a73)
+![dynamic-colors](https://github.com/firminoveras/FitIO/assets/19206565/c644b9be-b92f-4c09-9df4-2ab0bac05de9)
 
 ## Licença
 MIT License
