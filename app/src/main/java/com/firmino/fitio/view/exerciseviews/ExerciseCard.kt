@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.FavoriteBorder
+import androidx.compose.material.icons.rounded.KeyboardArrowDown
+import androidx.compose.material.icons.rounded.KeyboardArrowUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedAssistChip
@@ -57,7 +59,7 @@ fun Exercise(
 ) {
     val context = LocalContext.current
     var expanded by remember { mutableStateOf(extended) }
-    var instructionsVisible by remember {
+    val instructionsVisible by remember {
         mutableStateOf(
             loadBoolean(
                 SettingsBooleanKey.IS_INSTRUCTIONS_VISIBLE_DEFAULT, false, context
@@ -140,34 +142,57 @@ fun Exercise(
                             Text(text = exercise.equipment.capitalizeAndFormat())
                         })
                     }
-                    Card(modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)) {
-                        Column(modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable {
-                                instructionsVisible = !instructionsVisible
-                                save(
-                                    SettingsBooleanKey.IS_INSTRUCTIONS_VISIBLE_DEFAULT, instructionsVisible, context
-                                )
-                            }) {
-                            Text(
-                                text = "Instructions",
-                                modifier = Modifier.padding(16.dp),
-                                textAlign = TextAlign.Justify,
-                                style = MaterialTheme.typography.titleMedium,
-                            )
-                            AnimatedVisibility(visible = instructionsVisible) {
-                                Text(
-                                    text = exercise.instructions,
-                                    modifier = Modifier.padding(6.dp),
-                                    textAlign = TextAlign.Justify,
-                                    style = MaterialTheme.typography.bodySmall,
-                                )
-                            }
-                        }
+
+                    if (exercise.instructions.isNotEmpty()) {
+                        ExerciseInstructions(instructionsVisible, exercise)
                     }
+
                     Column(content = content)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ExerciseInstructions(expanded: Boolean, exercise: Exercise) {
+    var extended by remember { mutableStateOf(expanded) }
+    val context = LocalContext.current
+    Card(modifier = Modifier
+        .fillMaxWidth()
+        .padding(16.dp)) {
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .clickable {
+                extended = !extended
+                save(
+                    SettingsBooleanKey.IS_INSTRUCTIONS_VISIBLE_DEFAULT, extended, context
+                )
+            }) {
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)) {
+                Text(
+                    text = "Instructions",
+                    textAlign = TextAlign.Justify,
+                    style = MaterialTheme.typography.titleMedium,
+                )
+                Icon(
+                    if (extended) Icons.Rounded.KeyboardArrowUp else Icons.Rounded.KeyboardArrowDown,
+                    contentDescription = null,
+                    modifier = Modifier.align(Alignment.CenterEnd),
+                )
+            }
+
+            AnimatedVisibility(visible = extended) {
+                Column {
+                    Divider()
+                    Text(
+                        text = exercise.instructions,
+                        modifier = Modifier.padding(6.dp),
+                        textAlign = TextAlign.Justify,
+                        style = MaterialTheme.typography.bodySmall,
+                    )
                 }
             }
         }

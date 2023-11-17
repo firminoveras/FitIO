@@ -227,13 +227,13 @@ fun MuscularTrainContent(exercise: ExerciseLocal, enabled: Boolean, onUpdate: (e
             ) {
                 Text(
                     text = exercise.name,
-                    style = MaterialTheme.typography.titleLarge,
+                    style = MaterialTheme.typography.titleMedium,
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 1
                 )
                 Text(
                     text = "${exercise.sets}x${exercise.reps}",
-                    style = MaterialTheme.typography.titleMedium,
+                    style = MaterialTheme.typography.titleSmall,
                     modifier = Modifier.alpha(0.3f),
                     overflow = TextOverflow.Ellipsis,
                 )
@@ -245,10 +245,9 @@ fun MuscularTrainContent(exercise: ExerciseLocal, enabled: Boolean, onUpdate: (e
                             sets = 0
                             onUpdate(exercise.copy(setsCount = 0))
                         }) {
-                            Text(text = "Restart")
+                            Text(text = "Reset")
                         }
                     }
-                    Spacer(modifier = Modifier.width(16.dp))
                     Box(contentAlignment = Alignment.Center) {
                         FloatingActionButton(onClick = {
                             if (sets < exercise.sets) {

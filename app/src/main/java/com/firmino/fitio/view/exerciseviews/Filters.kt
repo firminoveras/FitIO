@@ -1,5 +1,7 @@
 package com.firmino.fitio.view.exerciseviews
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -14,6 +16,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Clear
+import androidx.compose.material.icons.rounded.Edit
+import androidx.compose.material.icons.rounded.KeyboardArrowUp
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Button
@@ -150,11 +154,7 @@ fun Filters(
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun FavoritesHeader(
-    title: String,
-    icon: ImageVector? = null,
-    filter: Filter,
-    total: Int,
-    onFilterUpdate: (filter: Filter) -> Unit
+    title: String, icon: ImageVector? = null, filter: Filter, total: Int, onFilterUpdate: (filter: Filter) -> Unit
 ) {
     ElevatedCard {
         Column(
@@ -163,7 +163,12 @@ fun FavoritesHeader(
                 .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if (icon != null) {
-                Icon(imageVector = icon, contentDescription = null, tint = MaterialTheme.colorScheme.onSurface, modifier = Modifier.size(32.dp))
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.size(32.dp)
+                )
             }
             Text(text = title, style = MaterialTheme.typography.displaySmall)
             Divider(modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp))
@@ -207,33 +212,58 @@ fun FilterButtons(
     onIndexSelected: (String) -> Unit
 ) {
     var selectedIndex by remember(index) { mutableIntStateOf(index) }
-    var selectedText by remember { mutableStateOf(list[selectedIndex]) }
-    var visible by remember { mutableStateOf(false) }
+    var extended by remember { mutableStateOf(false) }
+    val selectedText = remember(selectedIndex) {
+        if (selectedIndex == 0) {
+            "Any"
+        } else {
+            list[selectedIndex].capitalizeAndFormat()
+        }
+    }
 
     Column(modifier = Modifier.fillMaxWidth()) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            if (icon != null) Icon(icon, contentDescription = null)
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = title, style = MaterialTheme.typography.headlineSmall)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Absolute.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Row {
+                if (icon != null) Icon(icon, contentDescription = null)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(text = title, style = MaterialTheme.typography.headlineSmall)
+            }
+            if (extended) {
+                Icon(
+                    Icons.Rounded.KeyboardArrowUp,
+                    contentDescription = null,
+                    modifier = Modifier.clickable { extended = false })
+            } else {
+                AssistChip(onClick = { extended = true },
+                    trailingIcon = { Icon(imageVector = Icons.Rounded.Edit, contentDescription = null) },
+                    label = { Text(text = selectedText) })
+            }
         }
         Spacer(modifier = Modifier.height(8.dp))
-        FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            list.forEachIndexed { index, text ->
-                val s = text.ifEmpty { "Any" }
-                FilterChip(
-                    selected = index == selectedIndex,
-                    label = { Text(text = s.capitalizeAndFormat().split(" ")[0]) },
-                    leadingIcon = { if (index == selectedIndex) Icon(Icons.Rounded.Check, contentDescription = null) },
-                    onClick = {
-                        selectedIndex = index
-                        selectedText = s.capitalizeAndFormat()
-                        onIndexSelected(if (s == "Any") "" else s)
-                        visible = !visible
-                        onIndexChange(selectedIndex)
-                    },
-                )
+        AnimatedVisibility(visible = extended) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                list.forEachIndexed { index, text ->
+                    val s = text.ifEmpty { "Any" }
+                    FilterChip(
+                        selected = index == selectedIndex,
+                        label = { Text(text = s.capitalizeAndFormat().split(" ")[0]) },
+                        leadingIcon = {
+                            if (index == selectedIndex) Icon(
+                                Icons.Rounded.Check, contentDescription = null
+                            )
+                        },
+                        onClick = {
+                            selectedIndex = index
+                            onIndexSelected(if (s == "Any") "" else s)
+                            onIndexChange(selectedIndex)
+                        },
+                    )
+                }
             }
-
         }
     }
 
