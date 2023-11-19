@@ -20,10 +20,10 @@ import androidx.compose.material.icons.rounded.KeyboardArrowDown
 import androidx.compose.material.icons.rounded.KeyboardArrowUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
-import androidx.compose.material3.ElevatedAssistChip
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -138,7 +138,7 @@ fun Exercise(
                     ) {
                         Text(text = "Equipment:", style = MaterialTheme.typography.titleMedium)
                         Spacer(modifier = Modifier.width(6.dp))
-                        ElevatedAssistChip(onClick = {}, label = {
+                        SuggestionChip(onClick = {}, label = {
                             Text(text = exercise.equipment.capitalizeAndFormat())
                         })
                     }
