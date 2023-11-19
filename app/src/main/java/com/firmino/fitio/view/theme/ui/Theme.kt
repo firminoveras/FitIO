@@ -16,7 +16,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 enum class Theme {
-    DYNAMIC_NIGHT, DYNAMIC_LIGHT, NIGHT, LIGHT, MATERIAL_NIGHT, MATERIAL_LIGHT
+    DYNAMIC_NIGHT, DYNAMIC_LIGHT, CATPPUCCIN_NIGHT, CATPPUCCIN_LIGHT, MATERIAL_NIGHT, MATERIAL_LIGHT
 }
 
 private val DarkColorScheme = darkColorScheme(
@@ -90,7 +90,7 @@ fun FitIOTheme(theme: Theme, content: @Composable () -> Unit) {
             val context = LocalContext.current
             dynamicLightColorScheme(context)
         }
-        theme == Theme.NIGHT -> DarkColorScheme
+        theme == Theme.CATPPUCCIN_NIGHT -> DarkColorScheme
         theme == Theme.MATERIAL_LIGHT -> lightColorScheme()
         theme == Theme.MATERIAL_NIGHT -> darkColorScheme()
         else -> LightColorScheme
@@ -103,8 +103,8 @@ fun FitIOTheme(theme: Theme, content: @Composable () -> Unit) {
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = when(theme){
                 Theme.DYNAMIC_NIGHT -> true
                 Theme.DYNAMIC_LIGHT -> false
-                Theme.NIGHT -> true
-                Theme.LIGHT -> false
+                Theme.CATPPUCCIN_NIGHT -> true
+                Theme.CATPPUCCIN_LIGHT -> false
                 Theme.MATERIAL_NIGHT -> true
                 Theme.MATERIAL_LIGHT -> false
             }
